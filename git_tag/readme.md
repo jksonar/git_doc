@@ -218,3 +218,29 @@ $ git push origin master
 ```bash
 git checkout -b newbranch v1.0
 ```
+
+## clone a specific tag from a Git repository, use the following command:
+
+```sh
+git clone --branch <tag_name> --depth 1 <repository_url>
+```
+
+### Explanation:
+- `--branch <tag_name>`: Specifies the tag to clone.
+- `--depth 1`: Creates a shallow clone with only that tag's commit, reducing download size.
+
+### Example:
+```sh
+git clone --branch v1.2.3 --depth 1 https://github.com/example/repo.git
+```
+
+If you need the full history after cloning, you can fetch the rest with:
+```sh
+git fetch --unshallow
+```
+
+Alternatively, if you've already cloned the repository:
+```sh
+git fetch --tags
+git checkout tags/<tag_name> -b <new_branch_name>
+```
